@@ -4,6 +4,7 @@ import axios from "axios";
 import classes from "./styles.module.css";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import config from "../../config";
 
 export default function Home() {
   const { blogList, setBlogList, pending, setPending } =
@@ -12,7 +13,7 @@ export default function Home() {
 
   async function fetchListOfBlogs() {
     setPending(true);
-    const response = await axios.get("http://localhost:5000/api/blogs");
+    const response = await axios.get(`${config.API_BASE_URL}/api/blogs`);
     const result = await response.data;
 
     if (result && result.blogList && result.blogList.length) {
@@ -26,7 +27,7 @@ export default function Home() {
 
   async function handleDeleteBlog(getCurrentId) {
     const response = await axios.delete(
-      `http://localhost:5000/api/blogs/delete/${getCurrentId}`
+      `${config.API_BASE_URL}/api/blogs/delete/${getCurrentId}`
     );
 
     const result = await response.data;
