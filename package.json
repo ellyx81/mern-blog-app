@@ -5,8 +5,8 @@
   "scripts": {
     "setup": "cd client && npm install && cd ../server && npm install",
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
-    "start:frontend": "npm --prefix client start",
-    "start:backend": "npm --prefix server start"
+    "start:frontend": "cd client && npm start",
+    "start:backend": "cd server && npm start"
   },
   "engines": {
     "node": ">=16",
