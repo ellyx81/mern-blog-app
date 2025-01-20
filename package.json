@@ -3,8 +3,13 @@
     "concurrently": "^9.1.2"
   },
   "scripts": {
+    "setup": "cd client && npm install && cd ../server && npm install",
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
-    "start:frontend": "cd client && npm install && npm start",
-    "start:backend": "cd server && npm install && npm start"
+    "start:frontend": "npm --prefix client start",
+    "start:backend": "npm --prefix server start"
+  },
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8"
   }
 }
